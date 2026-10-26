@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pizzaria Microsserviços</title>
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+  <header>
+    <h1>🍕 Pizzaria — versão Microsserviços</h1>
+    <p>Esta página vem do frontend (http://localhost:5100) e conversa com três serviços independentes.</p>
+    <div class="servicos">
+      <span class="servico" id="saude-cardapio">Cardápio :5101</span>
+      <span class="servico" id="saude-pedidos">Pedidos :5102</span>
+      <span class="servico" id="saude-cozinha">Cozinha :5103</span>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>Cardápio <small class="vazio">(serviço de Cardápio)</small></h2>
+      <div id="mensagem-cardapio" class="mensagem erro oculto"></div>
+      <div id="lista-cardapio"><p class="vazio">Carregando cardápio...</p></div>
+      <button id="botao-recarregar-cardapio" class="secundario oculto">Tentar novamente</button>
+
+      <label for="cliente">Nome do cliente</label>
+      <input type="text" id="cliente" placeholder="Ex.: Maria">
+
+      <div class="acoes">
+        <span class="total">Total: <span id="total-pedido">R$ 0,00</span></span>
+        <button id="botao-pedido">Fazer pedido</button>
+      </div>
+      <div id="mensagem-pedido" class="mensagem oculto"></div>
+    </section>
+
+    <section>
+      <h2>Pedidos <small class="vazio">(Pedidos + status da Cozinha)</small></h2>
+      <div id="mensagem-pedidos" class="mensagem erro oculto"></div>
+      <div id="mensagem-cozinha" class="mensagem erro oculto"></div>
+      <div class="tabela-wrapper">
+        <table>
+          <thead>
+            <tr><th>#</th><th>Cliente</th><th>Itens</th><th>Total</th><th>Status</th><th></th></tr>
+          </thead>
+          <tbody id="lista-pedidos">
+            <tr><td colspan="6" class="vazio">Carregando pedidos...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

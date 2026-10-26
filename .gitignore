@@ -55,3 +55,15 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+
+# Visual Studio / Rider / editores
+.vs/
+*.user
+*.suo
+*.userprefs
+*.rsuser
+.idea/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db

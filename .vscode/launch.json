@@ -1,0 +1,83 @@
+{
+  // Requer a extensão "C#" (ms-dotnettools.csharp). Use F5 ou o painel "Executar e Depurar".
+  // As portas vêm do appsettings.json de cada projeto (chave "Urls").
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Monólito (5050)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build: monolito",
+      "program": "${workspaceFolder}/monolito/bin/Debug/net10.0/Pizzaria.Monolito.dll",
+      "cwd": "${workspaceFolder}/monolito",
+      "env": { "ASPNETCORE_ENVIRONMENT": "Development" },
+      "stopAtEntry": false,
+      "console": "internalConsole",
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "Now listening on:\\s+(https?://\\S+)"
+      }
+    },
+    {
+      "name": "Micro: Cardápio (5101)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build: cardapio",
+      "program": "${workspaceFolder}/microsservices/servicos/cardapio/bin/Debug/net10.0/Pizzaria.Cardapio.Api.dll",
+      "cwd": "${workspaceFolder}/microsservices/servicos/cardapio",
+      "env": { "ASPNETCORE_ENVIRONMENT": "Development" },
+      "stopAtEntry": false,
+      "console": "internalConsole"
+    },
+    {
+      "name": "Micro: Pedidos (5102)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build: pedidos",
+      "program": "${workspaceFolder}/microsservices/servicos/pedidos/bin/Debug/net10.0/Pizzaria.Pedidos.Api.dll",
+      "cwd": "${workspaceFolder}/microsservices/servicos/pedidos",
+      "env": { "ASPNETCORE_ENVIRONMENT": "Development" },
+      "stopAtEntry": false,
+      "console": "internalConsole"
+    },
+    {
+      "name": "Micro: Cozinha (5103)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build: cozinha",
+      "program": "${workspaceFolder}/microsservices/servicos/cozinha/bin/Debug/net10.0/Pizzaria.Cozinha.Api.dll",
+      "cwd": "${workspaceFolder}/microsservices/servicos/cozinha",
+      "env": { "ASPNETCORE_ENVIRONMENT": "Development" },
+      "stopAtEntry": false,
+      "console": "internalConsole"
+    },
+    {
+      "name": "Micro: Frontend (5100)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build: frontend",
+      "program": "${workspaceFolder}/microsservices/frontend/bin/Debug/net10.0/Pizzaria.Frontend.dll",
+      "cwd": "${workspaceFolder}/microsservices/frontend",
+      "env": { "ASPNETCORE_ENVIRONMENT": "Development" },
+      "stopAtEntry": false,
+      "console": "internalConsole",
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "Now listening on:\\s+(https?://\\S+)"
+      }
+    }
+  ],
+  "compounds": [
+    {
+      // Inicia e depura os 4 processos ao mesmo tempo (cada um aparece na barra de depuração).
+      "name": "Microsserviços: todos (frontend + 3 serviços)",
+      "configurations": [
+        "Micro: Cardápio (5101)",
+        "Micro: Pedidos (5102)",
+        "Micro: Cozinha (5103)",
+        "Micro: Frontend (5100)"
+      ],
+      "stopAll": true
+    }
+  ]
+}

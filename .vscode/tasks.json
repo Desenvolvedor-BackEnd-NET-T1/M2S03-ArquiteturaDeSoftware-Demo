@@ -1,0 +1,100 @@
+{
+  // Terminal > Executar Tarefa... (Run Task). As tarefas "build:" são usadas pelo launch.json;
+  // as tarefas "executar:" rodam os projetos com "dotnet run", sem depurador.
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build: monolito",
+      "type": "process",
+      "command": "dotnet",
+      "args": ["build", "${workspaceFolder}/monolito/Pizzaria.Monolito.csproj", "/property:GenerateFullPaths=true", "/consoleloggerparameters:NoSummary"],
+      "group": "build",
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "build: cardapio",
+      "type": "process",
+      "command": "dotnet",
+      "args": ["build", "${workspaceFolder}/microsservices/servicos/cardapio/Pizzaria.Cardapio.Api.csproj", "/property:GenerateFullPaths=true", "/consoleloggerparameters:NoSummary"],
+      "group": "build",
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "build: pedidos",
+      "type": "process",
+      "command": "dotnet",
+      "args": ["build", "${workspaceFolder}/microsservices/servicos/pedidos/Pizzaria.Pedidos.Api.csproj", "/property:GenerateFullPaths=true", "/consoleloggerparameters:NoSummary"],
+      "group": "build",
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "build: cozinha",
+      "type": "process",
+      "command": "dotnet",
+      "args": ["build", "${workspaceFolder}/microsservices/servicos/cozinha/Pizzaria.Cozinha.Api.csproj", "/property:GenerateFullPaths=true", "/consoleloggerparameters:NoSummary"],
+      "group": "build",
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "build: frontend",
+      "type": "process",
+      "command": "dotnet",
+      "args": ["build", "${workspaceFolder}/microsservices/frontend/Pizzaria.Frontend.csproj", "/property:GenerateFullPaths=true", "/consoleloggerparameters:NoSummary"],
+      "group": "build",
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "build: tudo",
+      "dependsOn": ["build: monolito", "build: cardapio", "build: pedidos", "build: cozinha", "build: frontend"],
+      "dependsOrder": "sequence",
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "executar: monolito",
+      "type": "process",
+      "command": "dotnet",
+      "args": ["run", "--project", "${workspaceFolder}/monolito/Pizzaria.Monolito.csproj"],
+      "presentation": { "panel": "dedicated" },
+      "problemMatcher": []
+    },
+    {
+      "label": "executar: cardapio",
+      "type": "process",
+      "command": "dotnet",
+      "args": ["run", "--project", "${workspaceFolder}/microsservices/servicos/cardapio/Pizzaria.Cardapio.Api.csproj"],
+      "presentation": { "panel": "dedicated" },
+      "problemMatcher": []
+    },
+    {
+      "label": "executar: pedidos",
+      "type": "process",
+      "command": "dotnet",
+      "args": ["run", "--project", "${workspaceFolder}/microsservices/servicos/pedidos/Pizzaria.Pedidos.Api.csproj"],
+      "presentation": { "panel": "dedicated" },
+      "problemMatcher": []
+    },
+    {
+      "label": "executar: cozinha",
+      "type": "process",
+      "command": "dotnet",
+      "args": ["run", "--project", "${workspaceFolder}/microsservices/servicos/cozinha/Pizzaria.Cozinha.Api.csproj"],
+      "presentation": { "panel": "dedicated" },
+      "problemMatcher": []
+    },
+    {
+      "label": "executar: frontend",
+      "type": "process",
+      "command": "dotnet",
+      "args": ["run", "--project", "${workspaceFolder}/microsservices/frontend/Pizzaria.Frontend.csproj"],
+      "presentation": { "panel": "dedicated" },
+      "problemMatcher": []
+    },
+    {
+      "label": "executar: todos os microsserviços",
+      "dependsOn": ["executar: cardapio", "executar: pedidos", "executar: cozinha", "executar: frontend"],
+      "dependsOrder": "parallel",
+      "problemMatcher": []
+    }
+  ]
+}

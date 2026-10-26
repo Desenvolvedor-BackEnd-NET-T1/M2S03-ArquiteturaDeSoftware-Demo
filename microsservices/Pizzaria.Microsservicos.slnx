@@ -1,0 +1,15 @@
+<Solution>
+  <Folder Name="/frontend/">
+    <Project Path="frontend/Pizzaria.Frontend.csproj" />
+  </Folder>
+  <Folder Name="/servicos/" />
+  <Folder Name="/servicos/cardapio/">
+    <Project Path="servicos/cardapio/Pizzaria.Cardapio.Api.csproj" />
+  </Folder>
+  <Folder Name="/servicos/cozinha/">
+    <Project Path="servicos/cozinha/Pizzaria.Cozinha.Api.csproj" />
+  </Folder>
+  <Folder Name="/servicos/pedidos/">
+    <Project Path="servicos/pedidos/Pizzaria.Pedidos.Api.csproj" />
+  </Folder>
+</Solution>

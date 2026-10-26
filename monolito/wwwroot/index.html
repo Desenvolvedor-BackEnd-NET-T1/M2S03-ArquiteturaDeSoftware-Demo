@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pizzaria Monólito</title>
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+  <header>
+    <h1>🍕 Pizzaria — versão Monólito</h1>
+    <p>Esta página, a API e os dados vêm de uma única aplicação (http://localhost:5050).</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Cardápio</h2>
+      <div id="mensagem-cardapio" class="mensagem erro oculto"></div>
+      <div id="lista-cardapio"><p class="vazio">Carregando cardápio...</p></div>
+
+      <label for="cliente">Nome do cliente</label>
+      <input type="text" id="cliente" placeholder="Ex.: Maria">
+
+      <div class="acoes">
+        <span class="total">Total: <span id="total-pedido">R$ 0,00</span></span>
+        <button id="botao-pedido">Fazer pedido</button>
+      </div>
+      <div id="mensagem-pedido" class="mensagem oculto"></div>
+    </section>
+
+    <section>
+      <h2>Pedidos</h2>
+      <div id="mensagem-pedidos" class="mensagem erro oculto"></div>
+      <div class="tabela-wrapper">
+        <table>
+          <thead>
+            <tr><th>#</th><th>Cliente</th><th>Itens</th><th>Total</th><th>Status</th><th></th></tr>
+          </thead>
+          <tbody id="lista-pedidos">
+            <tr><td colspan="6" class="vazio">Carregando pedidos...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
